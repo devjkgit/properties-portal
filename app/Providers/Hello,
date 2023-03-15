@@ -1,0 +1,11 @@
+Hello,
+
+Today I have worked on following things : 
+
+- I have created 2 pages along with the code for showing the data from both the apis for single property and property listing as well.
+
+- About the property list, I have tried that thing to get name and other details by api call at each property listing on home page. But I had to skipp that thing because it took more than a minute just to get the data. So now, we will be only showing reference id there along with the pagination.
+
+- Those 2 pages are not that much UI currently but i will be working on it.
+
+- I have created the new repo for this proj and here is the link with today's code commited. Link : 
