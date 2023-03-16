@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $property['name'] )
 @section('section')
 <body class="home_page">
     <!----- Room Slider ----->
@@ -62,9 +63,9 @@
                                                     data-original="#427ae4"
                                                     class="hovered-path"></path></g>
                                                 </svg>
-                                        {{ $property['total_bathrooms'] }}</div>
+                                        {{ $property['total_bedrooms'] }}</div>
                                     <div class="price_book">
-                                        <span class="hotel_price">{{ $property['base_night_price']}}</span>
+                                        <span class="hotel_price">{{ $property['base_night_price']}}£</span>
                                         <button>Book Now</button>
                                     </div>
                                 </h1>
@@ -624,29 +625,29 @@
                             <!----- Hotel Train Station ----->
                             <div class="next_station">
                                 <div class="map_img w-100">
-                                    <img src="Assets/images/map.png" alt=""
-                                        class="w-100">
+                                    <a target="_blank" title="View Image" href="{{ $property['static_map_image'] }}"><img src="{{ $property['static_map_image'] }}" alt=""
+                                        class="w-100"></a>
                                 </div>
                                 <div class="metro_station">
                                     <h4>{{ $property['nearest_metro_station']}}</h4>
                                     <div class="metro_distance">
                                         <p class="distance">Distance</p>
-                                        <p class="distance_no">0.5</p>
+                                        <p class="distance_no">{{ $property['nearest_metro_station_distance']}}</p>
                                     </div>
                                     <div class="metro_time">
                                         <p class="time">Time</p>
-                                        <p class="time_no">10 Min</p>
+                                        <p class="time_no">{{ $property['nearest_metro_station_time']}}</p>
                                     </div>
                                 </div>
                                 <div class="train_station">
-                                    <h4>West Brompton Station</h4>
+                                    <h4>{{ $property['nearest_train_station']}}</h4>
                                     <div class="metro_distance">
                                         <p class="distance">Distance</p>
-                                        <p class="distance_no">1.1</p>
+                                        <p class="distance_no">{{ $property['nearest_train_station_distance']}}</p>
                                     </div>
                                     <div class="metro_time">
                                         <p class="time">Time</p>
-                                        <p class="time_no">23 Min</p>
+                                        <p class="time_no">{{ $property['nearest_train_station_time']}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -654,26 +655,7 @@
                             <!----- Hotel Cancellation Policy ----->
                             <div class="cancellation_policy">
                                 <h4>Cancellation Policy</h4>
-                                <p>Full refund (less 5% processing fee) when
-                                    cancelling at least 14 days before check-in,
-                                    50% refund if cancelling less than 14 days
-                                    before check-in.<br><br>Cancellations due
-                                    to serious illness, bereavement or
-                                    government restrictions (COVID-19 or
-                                    otherwise), will receive a full refund (less
-                                    5% processing fee) when cancelling at least
-                                    5 days before check-in, 50% refund if
-                                    cancelling less than 5 days before
-                                    check-in.
-                                    <br><br>
-                                    Please read our
-                                    <strong>
-                                        <u>
-                                            <a
-                                                href='https://www.veeve.com/cancellation-policy'>Cancellation
-                                                Policy</a>
-                                        </u>
-                                    </strong> for full details.</p>
+                                <p>{!! $property['cancellation_policy'] !!}</p>
                             </div>
 
                         </div>
@@ -683,157 +665,85 @@
                             <h2>Rooms</h2>
                             <div class="room_details">
 
-                                <div class="outdoor_room">
-                                    <div class="outdoor_room_img">
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#outdoor">
-                                                <img
-                                                    src="Assets/images/outdoors_1.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#outdoor">
-                                                <img
-                                                    src="Assets/images/outdoors_2.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h3>Outdoors Spaces</h3>
-                                </div>
-
                                 <div class="bed_room">
                                     <div class="bed_room_img">
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#bed">
-                                                <img
-                                                    src="Assets/images/bath-1.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </div>
-                                        </a>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#bed">
-                                                <img
-                                                    src="Assets/images/bath-2.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#bed">
-                                                <img
-                                                    src="Assets/images/bath-4.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#bed">
-                                                <img
-                                                    src="Assets/images/bath-5.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
+                                        @foreach ($property['rooms']['bedrooms'] as $key => $value)
+                                            @foreach ($value['images'] as $key )
+                                                <div class="room_img">
+                                                    <a href="#" type="button"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#bed">
+                                                        <img
+                                                            src="{{ $key['small'] }}"
+                                                            alt=""
+                                                            height="162"
+                                                            class="w-100">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
                                     <h3>Bed Rooms</h3>
                                 </div>
-
+                                <div class="outdoor_room">
+                                    <div class="outdoor_room_img">
+                                        @foreach ($property['rooms']['bathrooms'] as $key => $value)
+                                            @foreach ($value['images'] as $key )
+                                                <div class="room_img">
+                                                    <a href="#" type="button"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#outdoor">
+                                                        <img
+                                                            src="{{ $key['small'] }}"
+                                                            alt=""
+                                                            height="162"
+                                                            class="w-100">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
+                                    </div>
+                                    <h3>Bath Rooms</h3>
+                                </div>
 
                                 <div class="living_room">
                                     <div class="living_room_img">
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#living">
-                                                <img
-                                                    src="Assets/images/living-1.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#living">
-                                                <img
-                                                    src="Assets/images/living-2.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#living">
-                                                <img
-                                                    src="Assets/images/living-3.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#living">
-                                                <img
-                                                    src="Assets/images/living-4.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
+                                        @foreach ($property['rooms']['living_rooms'] as $key => $value)
+                                            @foreach ($value['images'] as $key )
+                                                <div class="room_img">
+                                                    <a href="#" type="button"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#living">
+                                                        <img
+                                                            src="{{ $key['small'] }}"
+                                                            alt=""
+                                                            height="162"
+                                                            class="w-100">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
                                     <h3>Living Rooms</h3>
                                 </div>
 
                                 <div class="kitchen_room">
                                     <div class="kitchen_room_img">
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#kitchen">
-                                                <img
-                                                    src="Assets/images/kitchen-1.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#kitchen">
-                                                <img
-                                                    src="Assets/images/kitchen-2.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
-                                        <div class="room_img">
-                                            <a href="#" type="button"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#kitchen">
-                                                <img
-                                                    src="Assets/images/kitchen-3.jpg"
-                                                    alt=""
-                                                    class="w-100">
-                                            </a>
-                                        </div>
+                                        @foreach ($property['rooms']['kitchens'] as $key => $value)
+                                            @foreach ($value['images'] as $key )
+                                                <div class="room_img">
+                                                    <a href="#" type="button"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kitchen">
+                                                        <img
+                                                            src="{{ $key['small'] }}"
+                                                            alt=""
+                                                            height="162"
+                                                            class="w-100">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
                                     <h3>Kitchen</h3>
                                 </div>
@@ -847,7 +757,7 @@
         </section>
 
         <!-- Modal -->
-        <div class="modal fade" id="outdoor" tabindex="-1"
+        <!-- <div class="modal fade" id="outdoor" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -860,14 +770,10 @@
                     <div class="modal-body">
                         <div class="outdoor_popup_slider">
                             <div class="room_img">
-                                <img
-                                    src="Assets/images/outdoors_1.jpg"
-                                    alt=""
-                                    class="w-100">
+                                <img src="assets/sample-data/images/outdoors_1.jpg" alt="" class="w-100">
                             </div>
                             <div class="room_img">
-                                <img
-                                    src="Assets/images/outdoors_2.jpg"
+                                <img src="assets/sample-data/images/outdoors_2.jpg"
                                     alt=""
                                     class="w-100">
                             </div>
@@ -875,9 +781,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="modal fade" id="bed" tabindex="-1"
+        <!-- <div class="modal fade" id="bed" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -917,9 +823,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="modal fade" id="living" tabindex="-1"
+        <!-- <div class="modal fade" id="living" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -959,9 +865,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="modal fade" id="kitchen" tabindex="-1"
+        <!-- <div class="modal fade" id="kitchen" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -995,7 +901,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 @section('customscripts')
 <script>
     $('.hotel_images').slick({

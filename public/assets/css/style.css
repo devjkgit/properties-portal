@@ -84,6 +84,7 @@ body {
   margin-right: 6px;
 }
 .price_book {
+  z-index: 99999;
   position: fixed;
   bottom: 0;
   right: 20px;

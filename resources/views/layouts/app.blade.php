@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Properties Portal</title>
+        <title>@yield('title')</title>
 
         <!----- meta links ----->
         <meta charset="utf-8">

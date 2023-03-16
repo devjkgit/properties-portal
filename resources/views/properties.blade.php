@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Properties')
 @section('section')
 <body>
 <section class="all_products">
