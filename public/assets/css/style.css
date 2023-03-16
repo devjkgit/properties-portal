@@ -1,0 +1,425 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f4f8ff;
+}
+
+/*----- Room Slider -----*/
+.hotel_images {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+.hotel_details_main > .container {
+  margin-top: -60px;
+  position: relative;
+  z-index: 99;
+}
+.hotel_img {
+  padding: 0 5px;
+}
+.hotel_img img {
+  overflow: hidden;
+  /* border-radius: 10px; */
+}
+.slick-track {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.hotel_images .slick-next,
+.hotel_images .slick-prev {
+  display: none !important;
+}
+
+/*----- Hotel Details -----*/
+.hotel_details {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.hotel_details .left_details {
+  width: calc(100% - 350px);
+}
+.hotel_details .right_details {
+  width: 330px;
+}
+.hotel_city {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 20px;
+  color: #747474;
+}
+.hotel_name {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #427ae4;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.badroom {
+  padding: 8px 15px;
+  margin-left: 20px;
+  font-size: 22px;
+  border-radius: 5px;
+  /* color: #000; */
+  /* background-color: #ebebeb; */
+  color: #3467d8;
+  background-color: #dfebff;
+}
+.badroom svg {
+  margin-right: 6px;
+}
+.price_book {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+}
+.price_book button {
+  line-height: 33px;
+  font-size: 30px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background: #427ae4;
+  padding: 15px 30px 10px 30px;
+  border-radius: 10px 10px 0 0;
+}
+.hotel_name span {
+  line-height: 33px;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-right: 10px;
+  color: #ffffff;
+  background: #313131;
+  padding: 15px 30px 10px 30px;
+  border-radius: 10px 10px 0 0;
+}
+.hotel_decri {
+  font-size: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  /*-webkit-line-clamp: 3;*/
+  -webkit-box-orient: vertical;
+  color: #747474;
+}
+.hotel_decription .street_name {
+  width: 50%;
+  display: inline-flex;
+  margin: 10px 0;
+  align-items: flex-start;
+}
+.dtl_heading {
+  font-size: 15px;
+  color: #747474;
+  font-weight: 500;
+  width: 40%;
+}
+.hotel_review {
+  margin-bottom: 20px;
+}
+.hotel_review i {
+  color: #ffa726;
+  font-size: 15px;
+  margin-right: 0px;
+}
+.hotel_review i.light {
+  color: #efefef !important;
+}
+span.dtl_decri {
+  font-size: 15px;
+  color: #2c2c2c;
+  font-weight: 600;
+  width: 60%;
+}
+.hotel_decription,
+.address,
+.next_station,
+.amenities,
+.rules,
+.cancellation_policy,
+.hotel_rooms {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #427ae4;
+  margin-bottom: 20px;
+}
+
+/*----- Hotel Address -----*/
+.address {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.address div {
+  width: 50%;
+  display: inline-flex;
+  margin: 10px 0;
+  align-items: flex-start;
+}
+.address h2 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 30px;
+  font-weight: 600;
+  color: #427ae4;
+}
+
+/*----- Hotel Amenities -----*/
+.amenities {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.amenities h2 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 30px;
+  font-weight: 600;
+  color: #427ae4;
+}
+.amenities_name {
+  width: 100%;
+  margin: 10px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.amenities_name p {
+  width: 24%;
+  font-size: 15px;
+  color: #464646;
+  font-weight: 600;
+  background-color: #f4f8ff;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.5s;
+}
+.amenities_name p:hover {
+  color: #3467d8;
+  background-color: #dfebff;
+}
+.amenities_name p i {
+  margin-right: 5px;
+  color: #3467d8;
+}
+
+/*----- Hotel Rules -----*/
+.rules {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.rules h2 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ff0000;
+}
+.rull_list {
+  width: 100%;
+  margin: 10px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.rull_list ul {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.rull_list li {
+  width: 31%;
+  font-size: 20px;
+  color: #ff0000;
+  font-weight: 600;
+  background-color: #ffeaea;
+  border-radius: 5px;
+  padding: 20px 10px;
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.rull_list li svg {
+  margin-bottom: 20px;
+}
+
+/*----- Hotel Train Station -----*/
+.metro_station,
+.map_img {
+  margin-bottom: 30px;
+}
+.metro_station h4,
+.train_station h4 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+.metro_distance,
+.metro_time {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.distance,
+.time {
+  width: 40%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #747474;
+}
+.distance_no,
+.time_no {
+  width: 60%;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+.distance,
+.distance_no,
+.time,
+.tim_no {
+  margin-bottom: 5px;
+}
+
+/*----- Hotel Cancellation Policy -----*/
+.cancellation_policy h4 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+.cancellation_policy p {
+  margin: 0 !important;
+  font-size: 15px;
+  font-weight: 500;
+  color: #747474;
+}
+
+/*----- Hotel Room Details -----*/
+.hotel_rooms h2 {
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #d3d3d3;
+  font-size: 30px;
+  font-weight: 600;
+  color: #427ae4;
+}
+.room_details {
+  width: 100%;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.outdoor_room,
+.bed_room,
+.living_room,
+.kitchen_room {
+  padding: 0px 10px 10px 10px !important;
+}
+.outdoor_room h3,
+.bed_room h3,
+.living_room h3,
+.kitchen_room h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #646464;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.outdoor_room_img .slick-next,
+.outdoor_room_img .slick-prev,
+.bed_room_img .slick-next,
+.bed_room_img .slick-prev,
+.living_room_img .slick-next,
+.living_room_img .slick-prev,
+.kitchen_room_img .slick-next,
+.kitchen_room_img .slick-prev {
+  display: none !important;
+}
+
+.room_details > .slick-next:before,
+.modal-dialog .slick-next:before {
+  content: "\f105" !important;
+  font-family: "FontAwesome";
+  opacity: 1;
+  color: #fff;
+}
+.room_details > .slick-prev:before,
+.modal-dialog .slick-prev:before {
+  content: "\f104" !important;
+  font-family: "FontAwesome";
+  opacity: 1;
+  color: #fff;
+}
+.room_details > .slick-prev,
+.room_details > .slick-next,
+.modal-dialog .slick-next,
+.modal-dialog .slick-prev {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.5s;
+  background: #427ae4 !important;
+  border: none !important;
+  opacity: 1;
+  z-index: 999;
+}
+.room_details > .slick-prev,
+.room_details > .slick-next {
+  top: 38% !important;
+}
+.modal-dialog .slick-next,
+.modal-dialog .slick-prev {
+  top: 50% !important;
+  transform: translateY(-50%);
+}

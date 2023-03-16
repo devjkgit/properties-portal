@@ -20,3 +20,4 @@ use App\Http\Controllers\PropertiesController;
 
 Route::get('/',[PropertiesController::class,"index"]);
 Route::get('/property/{reference_id?}',[PropertiesController::class,"property"]);
+Route::get('/test/{reference_id?}',[PropertiesController::class,"testproperty"]);

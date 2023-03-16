@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('section')
+<body>
 <section class="all_products">
     <div class="container">
         <div class="row">
