@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', $property['name'] )
+@section("customcss")
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endsection
 @section('section')
 <body class="home_page">
     <!----- Room Slider ----->
@@ -21,6 +24,14 @@
 
                             <!----- Hotel Decription ----->
                             <div class="hotel_decription">
+                                @if(Session::has('success'))
+                                    <p class="alert alert-success">{{ Session::get('success') }}</p>
+                                @endif
+
+                                @if(Session::has('error'))
+                                    <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                                @endif
+
                                 <p class="hotel_city">{{ $property['city_name'] }}</p>
                                 <h1 class="hotel_name">{{ $property['name'] }}<div class="badroom">
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="25" height="25" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512
@@ -66,7 +77,9 @@
                                         {{ $property['total_bedrooms'] }}</div>
                                     <div class="price_book">
                                         <span class="hotel_price">{{ $property['base_night_price']}}£</span>
-                                        <button>Book Now</button>
+                                        <button type="btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#book_now">Book Now</button>
                                     </div>
                                 </h1>
                                 <div class="hotel_review">
@@ -676,7 +689,6 @@
                                                         <img
                                                             src="{{ $key['small'] }}"
                                                             alt=""
-                                                            height="162"
                                                             class="w-100">
                                                     </a>
                                                 </div>
@@ -696,7 +708,6 @@
                                                         <img
                                                             src="{{ $key['small'] }}"
                                                             alt=""
-                                                            height="162"
                                                             class="w-100">
                                                     </a>
                                                 </div>
@@ -717,7 +728,6 @@
                                                         <img
                                                             src="{{ $key['small'] }}"
                                                             alt=""
-                                                            height="162"
                                                             class="w-100">
                                                     </a>
                                                 </div>
@@ -738,7 +748,6 @@
                                                         <img
                                                             src="{{ $key['small'] }}"
                                                             alt=""
-                                                            height="162"
                                                             class="w-100">
                                                     </a>
                                                 </div>
@@ -755,6 +764,59 @@
                 </div>
             </div>
         </section>
+
+        <div class="modal fade" id="book_now" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url('/make_bookings/'.$property['reference']) }}"
+                            class="book_now_form" method="post">
+                            <div class="date">
+                                @csrf
+                                <div class="gest_start_date form_common_class">
+                                    <label for="">Select Dates</label>
+                                    <input required="" type="text" name="daterange" />
+                                </div>
+                                <div class="gest_end_date form_common_class">
+                                    <label for="">Persons</label>
+                                    <i class="fa-solid fa-person"></i>
+                                    <input required="" type="number" name="persons" 
+                                        placeholder="adults"/>
+                                </div>
+                            </div>
+                            <div class="gest_name form_common_class">
+                                <label for="">Name</label>
+                                <i class="fa-solid fa-user"></i>
+                                <input required="" type="text" name="cust_name" placeholder="Your Name">
+                            </div>
+                            <div class="gest_email form_common_class">
+                                <label for="">Email</label>
+                                <i class="fa-solid fa-envelope-open"></i>
+                                <input required="" type="email" name="cust_email" placeholder="Your Email">
+                            </div>
+                            <div class="gest_phone form_common_class">
+                                <label for="">Phone Number</label>
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <input required="" type="text" name="cust_phone" placeholder="Your Number">
+                            </div>
+                            <div class="adults">
+                                <div class="gest_adults form_common_class">
+                                </div>
+                            </div>
+                            <div class="submit_btn">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal -->
         <!-- <div class="modal fade" id="outdoor" tabindex="-1"
@@ -903,7 +965,20 @@
             </div>
         </div> -->
 @section('customscripts')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 <script>
+    $(function() {
+          $('input[name="daterange"]').daterangepicker({
+            opens: 'left',
+            minDate:new Date(),
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+          });
+    });
+
     $('.hotel_images').slick({
         nav: false,
         dots: false,

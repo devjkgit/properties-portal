@@ -29,6 +29,7 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
         <!----- Custom style sheet links ----->
+        @yield('customcss')
         <link rel="stylesheet" href="/assets/css/style.css">
 
     </head>

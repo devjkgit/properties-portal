@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\BookingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ use App\Http\Controllers\PropertiesController;
 Route::get('/',[PropertiesController::class,"index"]);
 Route::get('/property/{reference_id?}',[PropertiesController::class,"property"]);
 Route::get('/test/{reference_id?}',[PropertiesController::class,"testproperty"]);
+Route::post('/make_bookings/{propid?}',[BookingsController::class,"make_bookings"]);
